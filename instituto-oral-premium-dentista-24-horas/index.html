@@ -69,22 +69,27 @@ p{max-width:62ch}
 .wpp-icon{width:18px;height:18px;flex-shrink:0}
 
 /* ─── HERO ─── */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--brand)}
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.32}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(110deg,rgba(10,61,98,.92) 0%,rgba(10,61,98,.6) 55%,rgba(10,61,98,.2) 100%)}
-.hero .container{position:relative;z-index:2;padding-block:clamp(6rem,12vh,9rem)}
-.hero-inner{max-width:700px}
-.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);color:#fff;margin-top:1rem;line-height:1.1}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:100svh}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:auto}}
+.hero-left{background:var(--brand);display:flex;flex-direction:column;justify-content:center;padding:clamp(6rem,10vw,8rem) clamp(1.5rem,5vw,4rem) clamp(3rem,6vw,5rem);position:relative;overflow:hidden}
+.hero-left::before{content:'';position:absolute;inset:0;background:radial-gradient(55% 60% at 100% 0%,rgba(30,144,214,.3),transparent 60%);pointer-events:none}
+.hero-left-inner{position:relative;z-index:1;max-width:560px}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.6rem);color:#fff;margin-top:.875rem;line-height:1.1}
 .hero h1 em{font-style:italic;color:#7ecef4}
-.hero-sub{color:rgba(255,255,255,.82);font-size:1.1rem;margin-top:1.25rem;max-width:54ch}
-.hero-actions{margin-top:2.25rem;display:flex;gap:1rem;flex-wrap:wrap}
-.hero-rating{margin-top:2.5rem;display:inline-flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:.65rem 1.25rem;border-radius:var(--r-pill)}
-.hero-rating .stars{color:#f5c842;font-size:1rem;letter-spacing:.08em}
-.hero-rating .rt{color:#fff;font-size:.9rem;font-weight:600}
-.hero-rating .ct{color:rgba(255,255,255,.7);font-size:.82rem}
-.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.5);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.4rem}
-.hero-scroll::after{content:'';display:block;width:1px;height:30px;background:rgba(255,255,255,.3);animation:scrollpulse 2s infinite}
+.hero-sub{color:rgba(255,255,255,.78);font-size:1.05rem;margin-top:1.25rem;max-width:50ch}
+.hero-actions{margin-top:2rem;display:flex;gap:.875rem;flex-wrap:wrap}
+.hero-rating{margin-top:2.25rem;display:inline-flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:.6rem 1.2rem;border-radius:var(--r-pill)}
+.hero-rating .stars{color:#f5c842;font-size:.95rem;letter-spacing:.08em}
+.hero-rating .rt{color:#fff;font-size:.875rem;font-weight:600}
+.hero-rating .ct{color:rgba(255,255,255,.65);font-size:.8rem}
+.hero-right{position:relative;overflow:hidden;min-height:60svh}
+@media(max-width:860px){.hero-right{min-height:55vw}}
+.hero-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-right-veil{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,61,98,.35),transparent 50%)}
+.hero-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-radius:var(--r-lg);padding:.875rem 1.1rem;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:.75rem}
+.hero-badge .b-stars{color:#f5c842;font-size:1.1rem}
+.hero-badge .b-info strong{display:block;font-weight:700;color:var(--brand);font-size:.9375rem}
+.hero-badge .b-info span{font-size:.78rem;color:var(--ink-soft)}
 @keyframes scrollpulse{0%,100%{opacity:.3}50%{opacity:1}}
 
 /* ─── TRUST BAR ─── */
@@ -224,21 +229,17 @@ details[open] .faq-chevron{transform:rotate(180deg)}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe47add?w=1600&q=80" alt="Clínica odontológica">
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="container">
-    <div class="hero-inner">
+  <div class="hero-left">
+    <div class="hero-left-inner">
       <div class="reveal"><span class="tag" style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.9)">Clínica Odontológica · Belo Horizonte</span></div>
-      <h1 class="reveal" style="margin-top:1rem">Seu sorriso merece <em>cuidado de verdade</em></h1>
+      <h1 class="reveal">Seu sorriso merece <em>cuidado de verdade</em></h1>
       <p class="hero-sub reveal">Instituto Oral Premium - Dentista 24 Horas — referência em odontologia em Belo Horizonte. Tratamentos modernos, equipe especializada e atendimento humanizado.</p>
       <div class="hero-actions reveal">
         <a href="https://wa.me/5531997367514" class="btn btn-wpp" target="_blank">
           <svg class="wpp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.12.554 4.112 1.52 5.843L0 24l6.335-1.498A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.736-.508-5.3-1.395l-.38-.224-3.938.931.999-3.84-.248-.396A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
           Agendar Consulta
         </a>
-        <a href="https://www.google.com/maps/place/Instituto+Oral+Premium+-+Dentista+24+Horas/@-19.9396866,-43.9378233,17z/data=!3m1!4b1!4m6!3m5!1s0xa69720665b5827:0xb08253386a1d9b9c!8m2!3d-19.9396866!4d-43.9378233!16s%2Fg%2F11fp3q37p0?authuser=0&hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" class="btn btn-outline" target="_blank" style="border-color:rgba(255,255,255,.3);color:#fff">Ver no Google Maps</a>
+        <a href="https://www.google.com/maps/place/Instituto+Oral+Premium+-+Dentista+24+Horas/@-19.9396866,-43.9378233,17z/data=!3m1!4b1!4m6!3m5!1s0xa69720665b5827:0xb08253386a1d9b9c!8m2!3d-19.9396866!4d-43.9378233!16s%2Fg%2F11fp3q37p0?authuser=0&hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" class="btn btn-outline" target="_blank" style="border-color:rgba(255,255,255,.3);color:#fff">Ver no Maps</a>
       </div>
       <div class="hero-rating reveal">
         <span class="stars">★★★★★</span>
@@ -247,7 +248,17 @@ details[open] .faq-chevron{transform:rotate(180deg)}
       </div>
     </div>
   </div>
-  <div class="hero-scroll">scroll</div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe47add?w=1000&q=85" alt="Instituto Oral Premium - Dentista 24 Horas — Clínica Odontológica em Belo Horizonte">
+    <div class="hero-right-veil"></div>
+    <div class="hero-badge">
+      <span class="b-stars">★★★★★</span>
+      <div class="b-info">
+        <strong>4.8 estrelas</strong>
+        <span>50 avaliações Google</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- TRUST BAR -->
