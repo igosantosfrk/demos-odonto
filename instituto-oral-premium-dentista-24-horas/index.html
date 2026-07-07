@@ -69,8 +69,8 @@ p{max-width:62ch}
 .wpp-icon{width:18px;height:18px;flex-shrink:0}
 
 /* ─── HERO ─── */
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:100svh}
-@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:auto}}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:100svh;grid-auto-rows:1fr}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:auto;grid-auto-rows:auto}}
 .hero-left{background:var(--brand);display:flex;flex-direction:column;justify-content:center;padding:clamp(6rem,10vw,8rem) clamp(1.5rem,5vw,4rem) clamp(3rem,6vw,5rem);position:relative;overflow:hidden}
 .hero-left::before{content:'';position:absolute;inset:0;background:radial-gradient(55% 60% at 100% 0%,rgba(30,144,214,.3),transparent 60%);pointer-events:none}
 .hero-left-inner{position:relative;z-index:1;max-width:560px}
@@ -82,10 +82,10 @@ p{max-width:62ch}
 .hero-rating .stars{color:#f5c842;font-size:.95rem;letter-spacing:.08em}
 .hero-rating .rt{color:#fff;font-size:.875rem;font-weight:600}
 .hero-rating .ct{color:rgba(255,255,255,.65);font-size:.8rem}
-.hero-right{position:relative;overflow:hidden;min-height:60svh}
-@media(max-width:860px){.hero-right{min-height:55vw}}
-.hero-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-right-veil{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,61,98,.35),transparent 50%)}
+.hero-right{position:relative;overflow:hidden;min-height:60svh;background-color:var(--brand-mid);background-size:cover;background-position:center}
+@media(max-width:860px){.hero-right{min-height:65vw}}
+.hero-right img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.hero-right-veil{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,61,98,.4),transparent 50%)}
 .hero-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-radius:var(--r-lg);padding:.875rem 1.1rem;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:.75rem}
 .hero-badge .b-stars{color:#f5c842;font-size:1.1rem}
 .hero-badge .b-info strong{display:block;font-weight:700;color:var(--brand);font-size:.9375rem}
